@@ -34,27 +34,34 @@ export const venueSlice = createSlice({
       cost: 1100,
       quantity: 0,
     },
-  
   ],
   reducers: {
-   
-    incrementQuantity: (state, action) => {
-      const { payload: index } = action;
-      if (state[index]) {
-        if (state[index].name === " Auditorium Hall (Capacity:200)" && state[index].quantity >= 3) {
-          return;        }
-        state[index].quantity++;
+    incrementVenue: (state, action) => {
+      const index = action.payload;
+      const item = state[index];
+      if (!item) return;
+
+      // begränsning: max 3 för Auditorium
+      if (item.name === "Auditorium Hall (Capacity:200)" && item.quantity >= 3) {
+        return;
+      }
+
+      item.quantity += 1;
+    },
+    decrementVenue: (state, action) => {
+      const index = action.payload;
+      const item = state[index];
+      if (item && item.quantity > 0) {
+        item.quantity -= 1;
       }
     },
-    decrementQuantity: (state, action) => {
-      const { payload: index } = action;
-      if (state[index] && state[index].quantity > 0) {
-        state[index].quantity--;
-      }
+    resetVenues: (state) => {
+      state.forEach((item) => {
+        item.quantity = 0;
+      });
     },
   },
 });
 
-export const { incrementQuantity, decrementQuantity } = venueSlice.actions;
-
+export const { incrementVenue, decrementVenue, resetVenues } = venueSlice.actions;
 export default venueSlice.reducer;
