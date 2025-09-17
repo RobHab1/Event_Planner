@@ -25,13 +25,13 @@ Du kan välja olika **lokaler**, lägga till **tekniska tillbehör** och välja 
 ## 📊 Exempel på UI
 
 ### Hem (Venue Room Selection)
-![Home](docs/Home.png)
+![Home](public/Home.png)
 
 ### Meals Selection
-![Meals](docs/Mealplan.png)
+![Meals](public/Mealplan.png)
 
 ### Checkout (Total kostnad)
-![Checkout](docs/Checkout.png)
+![Checkout](public/Checkout.png)
 
 ---
 
